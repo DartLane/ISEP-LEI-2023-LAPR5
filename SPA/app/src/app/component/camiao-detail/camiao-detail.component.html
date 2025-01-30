@@ -1,0 +1,28 @@
+<div *ngIf="camiao">
+
+    <h2 class="tituloCriarCamioes">{{camiao.matricula | uppercase}} Details</h2>
+    <div><span class="tituloCriarCamioes">Matricula: <span>{{camiao.matricula}}</span></span></div>
+    <div>
+        <label for="tara" class="tituloCriarCamioes">Tara:</label>
+        <input id="tara" [(ngModel)]="camiao.tara" placeholder="tara">
+    </div>
+    <div>
+        <label for="capacidadeCarga" class="tituloCriarCamioes">Capacidade de Carga:</label>
+        <input id="capacidadeCarga" [(ngModel)]="camiao.capacidadeCarga" placeholder="capacidadeCarga">
+    </div>
+    <div>
+        <label for="cargaTotalBaterias" class="tituloCriarCamioes">Carga Total das Baterias:</label>
+        <input id="cargaTotalBaterias" [(ngModel)]="camiao.cargaTotalBaterias" placeholder="cargaTotalBaterias">
+    </div>
+    <div>
+        <label for="autonomia" class="tituloCriarCamioes">Autonomia:</label>
+        <input id="autonomia" [(ngModel)]="camiao.autonomia" placeholder="autonomia">
+    </div>
+    <div>
+        <label for="tempoRecarregamento" class="tituloCriarCamioes">Tempo de Recarregamento:</label>
+        <input id="tempoRecarregamento" [(ngModel)]="camiao.tempoRecarregamento" placeholder="tempoRecarregamento">
+    </div>
+    <button type="button" (click)="saveCamiao()">save</button>
+</div>
+
+

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+a {
+    color: #13a7a5;
+  }
+  
+  code {
+    color: #e47dad;
+  }
+  
+  .btn-primary {
+    color: rgb(22, 118, 89);
+    background-color: #2463a1;
+    border-color: #0f5699;
+  }
+  
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

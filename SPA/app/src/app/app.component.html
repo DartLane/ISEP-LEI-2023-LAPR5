@@ -1,0 +1,15 @@
+<div class="ssoLogin" *ngIf="CheckIfLog()">
+<button *ngIf="!loggedIn" (click)="signInWithFB()" class="ssoFb"  ><img src="assets/fb.png" alt="fb" class="fbImg" /></button>
+<asl-google-signin-button *ngIf="!loggedIn" (onSignIn)="signInWithGoogle()" class="ssoGoogle"></asl-google-signin-button>
+</div>
+<mat-drawer-container *ngIf="loggedIn">
+    <mat-drawer mode="side" opened="true">
+        <app-navigation></app-navigation>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+
+

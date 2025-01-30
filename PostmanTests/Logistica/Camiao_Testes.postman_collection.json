@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "81bd2bc9-6aa2-454d-b22c-e48de41a9fde",
+		"name": "Camiao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18049712"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*pm.test(\"Unsuccessful Get\", function () {\r",
+							"    pm.response.to.have.status(402);\r",
+							"});*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"matricula",
+						"AB-12-BB"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://localhost:3000/api/camiao/\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});\r",
+							"pm.test(\"Successful Post\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Check if created as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.matricula).to.eql('AB-12-BB');\r",
+							"    pm.expect(responsejson.tara).to.eql(20);\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql(4);\r",
+							"    pm.expect(responsejson.autonomia).to.eql(10);\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql(10);\r",
+							"});\r",
+							"\r",
+							"var str= responseBody;\r",
+							"var obj= JSON.parse(str);\r",
+							"pm.environment.set(\"camiaoId\", obj.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"matricula\": \"AB-12-BB\",\r\n        \"tara\": \"20\",\r\n        \"capacidadeCarga\": \"4\",\r\n        \"cargaTotalBaterias\": \"10\",\r\n        \"autonomia\": \"10\",\r\n        \"tempoRecarregamento\": \"33\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful Get\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.tara).to.eql('20');\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql('4');\r",
+							"    pm.expect(responsejson.autonomia).to.eql('10');\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql('10');\r",
+							"    pm.expect(responsejson.tempoRecarregamento).to.eql('33')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"matricula",
+						"AB-12-BB"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*pm.sendRequest(\"http://localhost:3000/api/camiao/459cef33-b43c-4867-ad4e-ddf848be06a5\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Successful Put\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Check if updated as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.tara).to.eql(20);\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql(3);\r",
+							"    pm.expect(responsejson.autonomia).to.eql(10);\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql(10);\r",
+							"    pm.expect(responsejson.tempoRecarregamento).to.eql(33)\r",
+							"    pm.collectionVariables.set(\"camiaoId\", responsejson.id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"{{camiaoId}}\",\r\n        \"tara\": \"20\",\r\n        \"capacidadeCarga\": \"3\",\r\n        \"cargaTotalBaterias\": \"10\",\r\n        \"autonomia\": \"10\",\r\n        \"tempoRecarregamento\": \"33\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/{{camiaoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"{{camiaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful Get\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.tara).to.eql('20');\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql('4');\r",
+							"    pm.expect(responsejson.autonomia).to.eql('10');\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql('10');\r",
+							"    pm.expect(responsejson.tempoRecarregamento).to.eql('33')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"matricula",
+						"AB-12-BB"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful Patch\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Check if updated as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.tara).to.eql('20');\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql(4);\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql('10');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"{{camiaoId}}\",\r\n        \"capacidadeCarga\": \"4\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/{{camiaoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"{{camiaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful Get\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if as intended\", function () {\r",
+							"    const responsejson= pm.response.json();\r",
+							"    pm.expect(responsejson.tara).to.eql('20');\r",
+							"    pm.expect(responsejson.capacidadeCarga).to.eql('4');\r",
+							"    pm.expect(responsejson.autonomia).to.eql('10');\r",
+							"    pm.expect(responsejson.cargaTotalBaterias).to.eql('10');\r",
+							"    pm.expect(responsejson.tempoRecarregamento).to.eql('33')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"matricula",
+						"AB-12-BB"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/{{camiaoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"{{camiaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/matricula/AB-12-BB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Unsuccessful Get\", function () {\r",
+							"    pm.response.to.have.status(402);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/{{camiaoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						"{{camiaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/camiao/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://localhost:3000/api/camiao/\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});\r",
+							"pm.test(\"Successful Get\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that it returns an array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array').but.not.an('object');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"cb3befb3-495e-4a50-9928-7075da4abdc5\",\r\n        \"matricula\": \"AB-12-BB\",\r\n        \"tara\": \"20\",\r\n        \"capacidadeCarga\": \"4\",\r\n        \"cargaTotalBaterias\": \"10\",\r\n        \"autonomia\": \"10\",\r\n        \"tempoRecarregamento\": \"33\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/camiao/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"camiao",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "camiaoId",
+			"value": ""
+		}
+	]
+}

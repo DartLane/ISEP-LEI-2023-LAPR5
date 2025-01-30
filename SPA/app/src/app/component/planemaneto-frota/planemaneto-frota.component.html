@@ -1,0 +1,50 @@
+<button type="button" (click)="goBack()">Go Back</button>
+<h1></h1>
+<label for="data" class="tituloData" style="position: relative; left: 30px">Data: </label>
+<input #data name="data" type="date" class="data" style="position: relative; left: 35px"><br><br>
+<button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" (click)="getPlaneamentoFrotaCompleta(data.value); data.value=''">
+    Calcula Planeamento de Frota
+</button>
+<button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" (click)="getMelhorPlaneamentoFrota(data.value); data.value=''">
+    Calcula Melhor Planeamento de Frota
+</button>
+<button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" (click)="getMelhorPlaneamentoFrota(data.value); getPlaneamentoFrotaCompleta(data.value); data.value=''">
+    Calcula Planeamento de Frota e Melhor Planeamento
+</button>
+<div class="planeamentoFrota">
+    <h2 class="tituloPlaneamento" style="position: relative; left: 15px;">Planeamento de Frota:</h2>
+    <ul class="mostrarPlaneamento" *ngIf="planeamentoFrota">
+        <li *ngFor="let camiao of planeamentoFrota.planeamento">
+            <label style="left: 20px; margin-top: 27px" for="camiao">Camião:</label> {{camiao.camiao}}
+            <ul>
+                <li *ngFor="let armazem of camiao.armazens">
+                    <label style="left: 25px; margin-top: 25px" for="armazem">Armazem:</label> {{armazem.armazem}}
+                    <ul>
+                        <li *ngFor="let entrega of armazem.entregas">
+                            <label style="left: 40px; margin-top: 25px" for="entrega">Entrega:</label> {{entrega.id}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="melhorPlaneamentoFrota">
+    <h2 class="tituloPlaneamento" style="position: relative; left: 15px;">Melhor Planeamento de Frota:</h2>
+    <ul class="mostrarPlaneamento" *ngIf="melhorPlaneamentoFrota">
+        <li *ngFor="let camiao of melhorPlaneamentoFrota.planeamento">
+            <label style="left: 20px; margin-top: 27px" for="camiao">Camião:</label> {{camiao.camiao}}
+            <ul>
+                <li *ngFor="let armazem of camiao.armazens">
+                    <label style="left: 25px; margin-top: 25px" for="armazem">Armazem:</label> {{armazem.armazem}}
+                    <ul>
+                        <li *ngFor="let entrega of armazem.entregas">
+                            <label style="left: 40px; margin-top: 25px" for="entrega">Entrega:</label> {{entrega.id}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+

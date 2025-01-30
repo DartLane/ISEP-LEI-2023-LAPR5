@@ -1,0 +1,138 @@
+
+<div class="camiaoSection">
+  <div class="criarform">
+    <h3 class="tituloCriarCamioes" style="margin-left: 40%;">CRIAR CAMIÕES</h3> 
+    <div class="row">
+        <div class="col">
+          <label for="matricula"  style="position: relative; left: 15px; bottom: 5px; margin-top: 30px">Matricula do Camião:</label><br>
+          <input #matricula
+          name="matricula"
+          type="text" 
+          class="form-control"
+          placeholder="Ex: 08-AA-45"
+          style="position: relative; left: 30px; bottom: 5px; margin-top: 10px">
+        </div>
+        <div class="col">
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <label for="tara" style="position: relative; left: 15px; bottom: 5px; margin-top: 30px;">Tara do Camião em KG:</label><br>
+            <input
+            #tara
+            name="tara"
+            type="number" Min="1" 
+            class="form-control"
+            placeholder="Ex: 7500"
+            style="position: relative; left: 30px; bottom: 5px; margin-top: 10px">
+        </div>
+        <div class="col">
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <label for="capacidadeCarga" style="position: relative; left: 15px; bottom: 5px; margin-top: 30px;">Capacidade de Carga do Camião em kG:</label><br>
+            <input
+            #capacidadeCarga
+            name="capacidadeCarga"
+            type="number" Min="1"
+            class="form-control"
+            placeholder="Ex: 4300"
+            style="position: relative; left: 30px; bottom: 5px; margin-top: 10px">
+        </div>
+        <div class="col">
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <label for="cargaTotalBaterias" style="position: relative; left: 15px; bottom: 5px; margin-top: 30px">Carga Total das Baterias em kWh:</label><br>
+            <input
+            #cargaTotalBaterias
+            name="cargaTotalBaterias"
+            type="number" Min="1" 
+            class="form-control"
+            placeholder="Ex: 80"
+            style="position: relative; left: 30px; bottom: 5px; margin-top: 10px">
+        </div>
+        <div class="col">    
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <label for="autonomia" style="position: relative; left: 15px; bottom: 5px; margin-top: 30px">Autonomia do Camião (Tempo Sem Carregamento de Baterias):</label><br>
+            <input
+            #autonomia
+            name="autonomia"
+            type="number" Min="1" 
+            class="form-control"
+            placeholder="Ex: 100"
+            style="position: relative; left: 30px; bottom: 5px; margin-top: 10px"
+          />
+        </div>
+        <div class="col">
+      </div>
+      
+      <div class="row">
+        <div class="col">
+            <label for="tempoRecarregamento" style="position: relative; left: 15px; bottom: 5px; margin-top: 30px">Tempo de Recarregamento Rápido das Baterias :</label><br>
+            <input
+            #tempoRecarregamento
+            name="tempoRecarregamento"
+            type="number"  Min="1" 
+            class="form-control"
+            placeholder="Ex: 60"
+            style="position: relative; left: 30px; bottom: 5px; margin-top: 10px"
+          />
+        </div>
+        <div class="col">   
+      </div>
+
+      <button 
+        (click)="criarCamiao(matricula.value, tara.value, capacidadeCarga.value, cargaTotalBaterias.value, autonomia.value, tempoRecarregamento.value )"
+        id="botaoAdicionarCamião"
+        class="card card-small"
+        style="position: relative; left: 27px; bottom: 5px; margin-top: 10px"
+      >
+      Adicionar Camião
+      </button>
+  </div>
+</div>
+
+<div class="camioes">
+  <h3 class="titulos" style="margin-top: 20px; ">CAMIÕES</h3>
+  <ul class="camioes">
+      <li *ngFor="let camiao of camioes">
+        <button class="inibir" title="Inibir camiao"
+        (click)="inibirCamiao(camiao)">Inibir</button> 
+      <a routerLink="/detail/{{camiao.matricula}}">     
+        <button [class.selected]="camiao === selectedCamiao" type="button" 
+        (click)="onSelect(camiao)"
+        >
+        <span class="badge">{{camiao.matricula}}</span>
+        </button>  
+      </a>
+      <button class="delete" title="delete camiao"
+        (click)="deleteCamiao(camiao)">X</button>  
+      </li>
+
+      <h3 class="titulos" style="left: 15px; margin-top: 45px">CAMIÕES INIBIDOS</h3>
+      <ul class="camioes">
+        <li *ngFor="let camiao of camioesInibidos">
+          <button class="inibido" title="Desinibir camiao"
+          (click)="desinibirCamiao(camiao)">?</button> 
+        <a routerLink="/detail/{{camiao.matricula}}">     
+          <button class="camiaoinibido" [class.selected]="camiao === selectedCamiao" type="button" 
+          (click)="onSelect(camiao)"
+          >
+          <span class="badge">{{camiao.matricula}}</span>
+          </button>  
+        </a>
+        <button class="delete" title="delete camiao"
+          (click)="deleteCamiao(camiao)">X</button>  
+        </li> 
+      </ul>
+  </ul>
+  <app-camiao-detail [camiao]="selectedCamiao"></app-camiao-detail>
+
+   
+

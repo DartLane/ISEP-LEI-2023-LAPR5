@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "ab495b7d-6172-4efb-a7e5-e38af3fbb1a1",
+		"name": "Entregas - Get,Post,Put",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23449747"
+	},
+	"item": [
+		{
+			"name": "Listar por Id(esperado erro 404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Entrega",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var str= responseBody;\r",
+							"var obj= JSON.parse(str);\r",
+							"pm.environment.set(\"id\", obj.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"tempodescarga\": 75,\r\n        \"tempocarga\": 77,\r\n        \"dia\": 4,\r\n        \"mes\": 11,\r\n        \"ano\": 2022,\r\n        \"massa\": 15.2,\r\n        \"armazemId\": \"001\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Entrega -erro esperado2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"tempodescarga\": 75,\r\n        \"tempocarga\": 77,\r\n        \"dia\": 4,\r\n        \"mes\": 11,\r\n        \"ano\": 2022,\r\n        \"massa\": 15.2,\r\n        \"armazemId\": \"00000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar por Id (esperado 200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Entregas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar por id de armazem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/armazem/001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"armazem",
+						"001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar por id de armazem - erro esperado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/armazem/003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"armazem",
+						"003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Entrega",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"\r",
+							"pm.test(\"tempodescarga check\", function () {\r",
+							"    pm.expect(responseJson.tempodescarga).to.eql(60);\r",
+							"});\r",
+							"pm.test(\"tempocarga check\", function () {\r",
+							"    pm.expect(responseJson.tempocarga).to.eql(61);\r",
+							"});\r",
+							"pm.test(\"dia check\", function () {\r",
+							"    pm.expect(responseJson.dia).to.eql(5);\r",
+							"});\r",
+							"pm.test(\"mes check\", function () {\r",
+							"    pm.expect(responseJson.mes).to.eql(12);\r",
+							"});\r",
+							"pm.test(\"ano check\", function () {\r",
+							"    pm.expect(responseJson.ano).to.eql(2022);\r",
+							"});\r",
+							"pm.test(\"massa check\", function () {\r",
+							"    pm.expect(responseJson.massa).to.eql(14.3);\r",
+							"});\r",
+							"pm.test(\"armazemId check\", function () {\r",
+							"    pm.expect(responseJson.armazemId).to.eql(\"001\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  \r\n  {\r\n        \"id\":\"{{id}}\",\r\n        \"tempodescarga\": 60,\r\n        \"tempocarga\": 61,\r\n        \"dia\": 5,\r\n        \"mes\": 12,\r\n        \"ano\": 2022,\r\n        \"massa\": 14.3,\r\n        \"armazemId\": \"001\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Entrega de teste",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/{{id}}/hard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"{{id}}",
+						"hard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar por Id (esperado erro)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Entregas/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Entregas",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

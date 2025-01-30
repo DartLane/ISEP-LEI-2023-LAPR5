@@ -1,0 +1,89 @@
+<div class="tudoArmazem">
+
+    <div class="armazemSection">
+        <div class="criarform">
+            <h3 class="tituloCriarArmazens">Criar Armazem</h3>
+            <form class="form" method="post">
+                <label for="id">ID: </label>
+                <input #id name="id" type="text" class="form-control" placeholder="Ex: 001"><br><br>
+
+                <label for="designacao">Designação:</label>
+                <input #designacao name="designacao" type="text" class="form-control"
+                    placeholder="Ex: Matosinhos"><br><br>
+
+                <label for="morada">Morada:</label>
+                <input #morada name="morada" type="text" class="form-control"
+                    placeholder="Ex: AV. dos Aliados, 330"><br><br>
+
+                <label for="localidade">Localidade:</label>
+                <input #localidade name="localidade" type="text" class="form-control" placeholder="Ex: Porto"><br><br>
+
+                <label for="codigoPostal">Código Postal:</label>
+                <input #codigoPostal name="codigoPostal" type="text" class="form-control"
+                    placeholder="Ex: 4000-066"><br><br>
+
+                <label for="latitude">Latitude:</label>
+                <input #latitude name="latitude" type="number" class="form-control"
+                    placeholder="Ex: 41.1483136"><br><br>
+
+                <label for="longitude">Longitude:</label>
+                <input #longitude name="longitude" type="number" class="form-control"
+                    placeholder="Ex: -8.6130035"><br><br>
+
+                <label for="altitude">Altitude:</label>
+                <input #altitude name="altitude" type="number" class="form-control" placeholder="Ex: 800.0"><br><br>
+
+                <input type="button" class="card card-small" value="Adicionar Armazém"
+                    (click)="add(id.value, designacao.value, morada.value, localidade.value, codigoPostal.value, latitude.valueAsNumber, longitude.valueAsNumber, altitude.valueAsNumber); 
+        id.value='';  designacao.value=''; morada.value=''; localidade.value=''; codigoPostal.value=''; latitude.value=''; longitude.value=''; altitude.value=''">
+                <input type="reset" class="card card-small">
+            </form>
+        </div>
+    </div>
+
+    <ul class="listarArmazens">
+        <h3 class="titulos">Armazens</h3>
+        <div class="filterTd">
+
+            <select class="selectFilters" id="selectFilter">
+                <option value="todos">Todos</option>
+                <option value="Id">ID</option>
+                <option value="Localidade">Localidade</option>
+                <option value="Designacao">Designacao</option>
+                <option value="Coordenadas">Coordenadas</option>
+            </select>
+            <div class="col">
+                <input type="text" class="filterValue" id="inputFilter1" placeholder="Filter">
+            </div>
+            <div class="col">
+                <input type="text" class="filterValue" id="inputFilter2" placeholder="Filter">
+            </div>
+        </div>
+        <button id="botaoFiltrarArmazens" class="filterButton" (click)="filterArmazens()">
+            Filtrar
+        </button>
+
+        <div class="grid-container">
+            <div>
+                <li *ngFor="let armazem of armazensFuncionais">
+                    <a routerLink="/armazens/detail/{{armazem.id}}">
+                        <span class="badge">{{armazem.id}}</span> - {{armazem.designacao}}
+                    </a>
+                    <button type="button" class="delete" title="inibir armazem" (click)="inibir(armazem)"><mat-icon>lock</mat-icon></button>
+                </li>
+            </div>
+            <div>
+                <h3 class="titulos" id="tituloInibidos">Armazens INIBIDOS</h3>
+                <li *ngFor="let armazem of armazensInibidos">
+                    <button type="button" class="delete" title="desinibir armazem" (click)="desinibir(armazem)"><mat-icon>lock_open</mat-icon></button>
+                    <a routerLink="/armazens/detail/{{armazem.id}}">
+                        <span class="badge">{{armazem.id}}</span> - {{armazem.designacao}}
+                    </a>
+                    <button type="button" class="delete" title="delete armazem" (click)="delete(armazem)"><mat-icon>delete_forever</mat-icon></button>
+                </li>
+            </div>
+        </div>
+    </ul>
+</div>
+<!--https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#angular-material-icons-list-categories
+<app-message></app-message>-->

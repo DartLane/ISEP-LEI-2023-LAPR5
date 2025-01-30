@@ -1,0 +1,77 @@
+.planeamentoSection {
+    margin: 50px 0;
+}
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 20px;
+    color: #dcd3dc ; 
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.allPlaneamento{
+    width: 87%;
+    margin: 50px 30px;
+    box-sizing: border-box;
+    border: 10px solid  #c6bec6;
+    background-color:  #483d48;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    /*Round corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    /*Shadow*/
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000; 
+}  
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+}
+.tituloPlaneamento{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Courier New, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 17px;
+    color: #dcd3dc ; 
+}
+
+.planeamentoFrota{
+    width: 33%;
+    margin: 50px 30px;
+    box-sizing: border-box;
+    border: 10px solid  #c6bec6;
+    background-color:  #483d48;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    /*Round corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    /*Shadow*/
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+}
+
+button {
+    margin-top: 10px;
+    background-color: #c6bec6;
+    color: black;
+    border: 2px;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.data{
+    border-radius: 5px;
+    /*Espaçamento interno*/
+    padding: 5px;
+    position: relative; 
+    left: 30px; 
+    margin-top: 10px
+}
+.camiao{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 20px;
+    color: #483d48 ; 
+}

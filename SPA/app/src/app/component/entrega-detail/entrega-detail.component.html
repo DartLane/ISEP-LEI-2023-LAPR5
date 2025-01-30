@@ -1,0 +1,36 @@
+<div *ngIf="entrega">
+
+    <h2 class="tituloCriarEntregas">ArmazemId:{{entrega.armazemId}} {{entrega.dia}}/{{entrega.mes}}/{{entrega.ano}} Details</h2>
+    <div><span class="tituloCriarEntregas">Id: <span>{{entrega.id}}</span></span></div>
+    <div>
+        <label for="tempodescarga" class="tituloCriarEntregas">Tempo Descarga:</label>
+        <input id="tempodescarga" [(ngModel)]="entrega.tempodescarga" placeholder="tempodescarga">
+    </div>
+    <div>
+        <label for="tempocarga" class="tituloCriarEntregas">Tempo Carga:</label>
+        <input id="tempocarga" [(ngModel)]="entrega.tempocarga" placeholder="tempocarga">
+    </div>
+    <div>
+        <label for="massa" class="tituloCriarEntregas">Massa da Entrega:</label>
+        <input id="massa" [(ngModel)]="entrega.massa" placeholder="massa">
+    </div>
+    <div>
+        <label for="armazemId" class="tituloCriarEntregas">ArmazemId da Entrega:</label>
+        <input id="armazemId" [(ngModel)]="entrega.armazemId" placeholder="armazemId">
+    </div>
+    <div>
+        <label for="dia" class="tituloCriarEntregas">Dia da Entrega:</label>
+        <input id="dia" [(ngModel)]="entrega.dia" placeholder="dia">
+    </div>
+    <div>
+        <label for="mes" class="tituloCriarEntregas">Mes da Entrega:</label>
+        <input id="mes" [(ngModel)]="entrega.mes" placeholder="mes">
+    </div>
+    <div>
+        <label for="ano" class="tituloCriarEntregas">Ano da Entrega:</label>
+        <input id="ano" [(ngModel)]="entrega.ano" placeholder="ano">
+    </div>
+    <button type="button" (click)="saveEntrega()">save</button>
+</div>
+
+

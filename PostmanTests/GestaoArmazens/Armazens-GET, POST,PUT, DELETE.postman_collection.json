@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "7e1f2031-dddf-4f31-a071-88b6c482876d",
+		"name": "Armazens-GET, POST,PUT, DELETE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20944238"
+	},
+	"item": [
+		{
+			"name": "GET id=144(Esperado erro 404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST id=144(Esperado 201/202)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\" : \"144\",\r\n    \"Designacao\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"Morada\": \"atum\",\r\n    \"Localidade\": \"Localidade\",\r\n    \"CodigoPostal\": \"4000-123\",\r\n    \"Latitude\": 10,\r\n    \"Longitude\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET id=144(Esperado status 200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT (Esperado 200 e alteração dados)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Designação check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bbb\");\r",
+							"});\r",
+							"pm.test(\"Morada check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"atum2\");\r",
+							"});\r",
+							"pm.test(\"Localidade check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Localidade2\");\r",
+							"});\r",
+							"pm.test(\"CodigoPostal check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"4000-124\");\r",
+							"});\r",
+							"pm.test(\"Latitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});\r",
+							"pm.test(\"Longitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\" : \"144\",\r\n    \"Designacao\": \"bbb\",\r\n    \"Morada\": \"atum2\",\r\n    \"Localidade\": \"Localidade2\",\r\n    \"CodigoPostal\": \"4000-124\",\r\n    \"Latitude\": 11,\r\n    \"Longitude\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET id=144(Esperado status 200) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Designação check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bbb\");\r",
+							"});\r",
+							"pm.test(\"Morada check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"atum2\");\r",
+							"});\r",
+							"pm.test(\"Localidade check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Localidade2\");\r",
+							"});\r",
+							"pm.test(\"CodigoPostal check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"4000-124\");\r",
+							"});\r",
+							"pm.test(\"Latitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});\r",
+							"pm.test(\"Longitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET designacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Designação check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bbb\");\r",
+							"});\r",
+							"pm.test(\"Morada check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"atum2\");\r",
+							"});\r",
+							"pm.test(\"Localidade check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Localidade2\");\r",
+							"});\r",
+							"pm.test(\"CodigoPostal check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"4000-124\");\r",
+							"});\r",
+							"pm.test(\"Latitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});\r",
+							"pm.test(\"Longitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/designacao/bbb",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"designacao",
+						"bbb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Localidade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Designação check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bbb\");\r",
+							"});\r",
+							"pm.test(\"Morada check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"atum2\");\r",
+							"});\r",
+							"pm.test(\"Localidade check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Localidade2\");\r",
+							"});\r",
+							"pm.test(\"CodigoPostal check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"4000-124\");\r",
+							"});\r",
+							"pm.test(\"Latitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});\r",
+							"pm.test(\"Longitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/localidade/Localidade2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"localidade",
+						"Localidade2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET coordenadas: latitude=11&longitude=11",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Designação check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bbb\");\r",
+							"});\r",
+							"pm.test(\"Morada check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"atum2\");\r",
+							"});\r",
+							"pm.test(\"Localidade check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Localidade2\");\r",
+							"});\r",
+							"pm.test(\"CodigoPostal check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"4000-124\");\r",
+							"});\r",
+							"pm.test(\"Latitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});\r",
+							"pm.test(\"Longitude check\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/coordenadas/latitude=11&longitude=11",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"coordenadas",
+						"latitude=11&longitude=11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE HARD id = 144",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144/hard",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144",
+						"hard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET id=144(Esperado erro 404) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Armazens/144",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Armazens",
+						"144"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,23 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="../../assets/logo.png" alt="Logo">
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APLICAÇÕES</h2>
+  <a mat-list-item routerLink="/dashboard" routerLinkActive="list-item-active">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a *ngIf="checkUserFrota()" mat-list-item routerLink="camioes" routerLinkActive="camioes-activate"><mat-icon>local_shipping</mat-icon> Camiao</a>
+  <a *ngIf="checkUserLogistica()" mat-list-item routerLink="caminhos" routerLinkActive= "caminhos-activate"><mat-icon>navigation</mat-icon> Caminho</a>
+  <a *ngIf="checkUserArmazens()" mat-list-item routerLink="armazens" routerLinkActive="armazens-activate"><mat-icon>location_city</mat-icon> Armazéns</a>
+  <a *ngIf="checkUserArmazens()" mat-list-item routerLink="entregas"  routerLinkActive="entregas-activate" ><mat-icon>local_post_office</mat-icon> Entregas </a>
+  <a mat-list-item routerLink="redeviaria"  routerLinkActive="redeviaria-activate"><mat-icon>map</mat-icon> Rede Viária</a>
+  <a *ngIf="checkUserLogistica()" mat-list-item routerLink="planeamento"  routerLinkActive="planeamento-activate"><mat-icon>alt_route </mat-icon> Planeamento</a>
+  <a *ngIf="checkUserLogistica()" mat-list-item routerLink="planoEntregas"  routerLinkActive="planoEntregas-activate"><mat-icon>alt_route </mat-icon> Plano de Entregas</a>
+  <a *ngIf="checkUserAdmin()" mat-list-item routerLink="users"  routerLinkActive="users-activate"><mat-icon> account_circle </mat-icon> Users</a>
+  <a mat-list-item routerLink="perfil"  routerLinkActive="perfil-activate"><mat-icon>account_box</mat-icon> Perfil</a>
+  <button id="botaoLogOut" class="filterButton" (click)="LogOut()">
+    LogOut
+  </button>
+
+</mat-nav-list>

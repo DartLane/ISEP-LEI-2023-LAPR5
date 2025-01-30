@@ -1,0 +1,32 @@
+<div class="tudoPerfil">
+    <div class="allDetail" *ngIf="user">
+        <h2>Perfil</h2>
+        <div>
+            <label for="telemovel" class="tituloCriarUser">Telemovel: {{user.phoneNumber}}</label>
+        </div>
+        <div>
+            <label for="email" class="tituloCriarUser">Email: {{user.email}}</label>
+        </div>
+        <div>
+            <label for="firstName" class="tituloCriarUsers">Nome do Utilizador:</label>
+            <input id="firstName" [(ngModel)]="user.firstName" placeholder="firstName">
+        </div>
+        <div>
+            <label for="lastName" class="tituloCriarUsers">Sobrenome do Utilizador:</label>
+            <input id="lastName" [(ngModel)]="user.lastName" placeholder="lastName">
+        </div>
+        <div>
+            <label for="userName" class="tituloCriarUsers">UserName do Utilizador:</label>
+            <input id="userName" [(ngModel)]="user.userName" placeholder="userName">
+        </div>
+        <div>
+            <label for="password" class="tituloCriarUsers">Password do Utilizador:</label>
+            <input id="password" [(ngModel)]="user.password" placeholder="password">
+        </div>
+        <div>
+            <label for="userType" class="tituloCriarUsers">UserType: {{user.userType}}</label>
+        </div>
+        <button type="button" (click)="updateUser()">update</button>
+        <button type="button" (click)="anonimizar()">cancelar</button>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="allDetail" *ngIf="caminho">
+
+    <h2>Armazém {{caminho.idArmazemOrigem}} -> Armazém {{caminho.idArmazemDestino}} Details</h2>
+    <div class="classId"><span>Identificador: <span>{{caminho.id}}</span></span></div>
+    <div>
+        <label for="energiaNecessariaKWh">Energia Necessária em KWh:</label>
+        <input id="energiaNecessariaKWh" [(ngModel)]="caminho.energiaNecessariaKWh" placeholder="energiaNecessariaKWh">
+    </div>
+    <div>
+        <label for="tempoDeslocacaoMin">Tempo Deslocação em Minutos: </label>
+        <input id="tempoDeslocacaoMin" [(ngModel)]="caminho.tempoDeslocacaoMin" placeholder="tempoDeslocacaoMin">
+    </div>
+    <div>
+        <label for="idArmazemOrigem">Identificador do Armazém de Origem:</label>
+        <input id="idArmazemOrigem" [(ngModel)]="caminho.idArmazemOrigem" placeholder="idArmazemOrigem">
+    </div>
+    <div>
+        <label for="idArmazemDestino">Identificador do Armazém de Destino:</label>
+        <input id="idArmazemDestino" [(ngModel)]="caminho.idArmazemDestino" placeholder="idArmazemDestino">
+    </div>
+    <div>
+        <label for="distanciaEntreArmazens">Distância Entre Armazéns: </label>
+        <input id="distanciaEntreArmazens" [(ngModel)]="caminho.distanciaEntreArmazens"
+            placeholder="distanciaEntreArmazens">
+    </div>
+    <button type="button" (click)="saveCaminho()">Save</button>
+</div>

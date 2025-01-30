@@ -1,0 +1,41 @@
+<div class="planeamentoFrota">
+    <h2 class="tituloPlaneamento" style="position: relative; left: 12px;">Planeamento de Frota:
+        <a routerLink="/planeamento/planeamentoFrota">
+            <span class="badge">Mostrar Planeamento</span> 
+        </a>
+    </h2>
+</div>
+<div class="allPlaneamento">
+    <h2 class="tituloPlaneamento" style="position: relative; left: 12px">Calcular Planeamento para Camião</h2>
+    <label for="data" class="tituloPlaneamento" style="position: relative; left: 12px">Data: </label>
+    <input #data name="data" type="date" class="data"><br><br>
+    <button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" (click)="getPlaneamento(data.value); data.value=''">
+        CalculaPlaneamento
+    </button>
+    <button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" 
+        (click)="getPlaneamentoHeuristicaMenorTempo(data.value); data.value=''">
+        CalculaPlaneamentoHeuristicaMenorTempo
+    </button>
+    <button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" 
+        (click)="getPlaneamentoHeuristicaMaiorMassa(data.value); data.value=''">
+        CalculaPlaneamentoHeuristicaMaiorMassa
+    </button>
+    <button type="button" class="getPlaneamento-button" style="position: relative; left: 15px" 
+        (click)="getPlaneamentoHeuristicaCombinada(data.value); data.value=''">
+        CalculaPlaneamentoHeuristicaCombinada
+    </button>
+
+    <ul class="mostrarPlaneamento" *ngIf="planeamento">
+        <label  style="margin-top: 30px" for="camiao">Camião:</label> {{planeamento.camiaoMatricula}}
+        <li *ngFor="let armazem of planeamento.armazens">
+            <label style="left: 15px; margin-top: 27px" for="armazem">Armazem:</label> {{armazem.armazem}}
+            <ul>
+                <li *ngFor="let entrega of armazem.entregas">
+                    <label style="left: 19px; margin-top: 25px" for="entrega">Entrega:</label> {{entrega.id}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+

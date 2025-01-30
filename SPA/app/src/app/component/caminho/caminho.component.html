@@ -1,0 +1,90 @@
+<div class=" main" id="lines">
+  <div class="slide-left">
+    <h1 class="titulos" style="margin-left: 43%;"></h1>
+  </div>
+</div>
+
+<div class="caminhoSection">
+  <div class="criarform">
+    <h3 class="tituloCriarCaminhos" style="margin-left: 43%;">Criar Caminhos</h3>
+    <div class="col">
+      <label for="energiaNecessariaKWh">Energia necessária para percorrer o Caminho em KWh:</label>
+      <br>
+      <input #energiaNecessariaKWh name="energiaNecessariaKWh" type="number" Min="1" class="form-control"
+        placeholder="Ex: 100">
+    </div>
+
+
+    <div class="col">
+      <label for="tempoDeslocacaoMin">Tempo de deslocacao minimo entre armazéns em Minutos:</label>
+      <br>
+      <input #tempoDeslocacaoMin name="tempoDeslocacaoMin" type="number" Min="1" class="form-control"
+        placeholder="Ex: 60">
+    </div>
+
+
+    <div class="col">
+      <label for="idArmazemOrigem">Identificador do Armazém de Origem:</label>
+      <br>
+      <input #idArmazemOrigem name="idArmazemOrigem" type="text" Min="1" class="form-control" placeholder="Ex: 001">
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="idArmazemDestino">Identificador do Armazém de Destino:</label>
+        <br>
+        <input #idArmazemDestino name="idArmazemDestino" type="text" Min="1" class="form-control" placeholder="Ex: 002">
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="distanciaEntreArmazens">Distância entre os 2 Armazéns em Km:</label>
+          <br>
+          <input #distanciaEntreArmazens name="distanciaEntreArmazens" type="number" Min="1" class="form-control"
+            placeholder="Ex: 100" />
+        </div>
+
+        <button
+          (click)="criarCaminho(energiaNecessariaKWh.value, tempoDeslocacaoMin.value, idArmazemOrigem.value, idArmazemDestino.value, distanciaEntreArmazens.value)"
+          id="botaoAdicionarCamião" class="card card-small">
+          Adicionar Caminho
+        </button>
+      </div>
+    </div>
+
+    <div class="caminhos">
+      <h3 class="titulos" style="margin-top: 20px; ">Caminhos</h3>
+      <!-- Select to select filter, and an input to put value-->
+      <div class="filterTd">
+
+        <select class="selectFilters" id="selectFilter">
+          <option value="todos">Todos</option>
+          <option value="idArmazemOrigem">Armazém de Origem</option>
+          <option value="idArmazemDestino">Armazém de Destino</option>
+        </select>
+
+        <div class="col">
+          <input type="text" name="filter" class="filterValue" id="inputFilter" placeholder="Filter">
+        </div>
+      </div>
+      <button id="botaoFiltrarCaminhos" class="filterButton" (click)="filterCaminhos()">
+        Filtrar
+      </button>
+
+
+      <ul class="caminhos" id="caminhos">
+        <li *ngFor=" let caminho of caminhos | paginate: { itemsPerPage: pageSize, currentPage: paginaAtual, totalItems: total }">
+          <a routerLink="/detail/{{caminho.id}}">
+            <button [class.selected]="caminho === selectedCaminho" type="button" (click)="onSelect(caminho)">
+              <span class="badge">Armazém {{caminho.idArmazemOrigem}} --> Armazém
+                {{caminho.idArmazemDestino}}</span>
+            </button>
+          </a>
+          <button class="delete" title="Delete caminho" (click)="deleteCaminho(caminho.id)">X</button>
+        </li>
+      </ul>
+      <div class="pagination">
+        <pagination-controls class="my-pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+      </div>
+      <app-caminho-detail [caminho]="selectedCaminho" id="detalheCaminho"></app-caminho-detail>
+    </div>

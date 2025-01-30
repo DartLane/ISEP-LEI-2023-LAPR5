@@ -1,0 +1,30 @@
+pipelines:
+  default:
+
+        - step:
+            name: Build and Test Logistica
+            image: node:16
+            caches:
+              - node
+            script:
+              - cd Logistica
+              - npm install
+              - npm test
+        - step:
+            name: Deploy to test Logistica
+            deployment: test
+            # trigger: manual  # Uncomment to make this a manual deployment.
+            script:
+              - echo "Deploying to test environment"     
+        - step:
+            name: Build and Test Gest�o Armazens
+            image: mcr.microsoft.com/dotnet/sdk:6.0
+            caches:
+              - dotnetcore
+            script:
+              - cd GestaoArmazens
+              - dotnet build 
+              - dotnet test
+            artifacts:
+              - linter-reports/**
+        

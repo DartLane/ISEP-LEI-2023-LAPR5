@@ -1,0 +1,81 @@
+label {
+    color: #dcd3dc;
+    font-weight: bold;
+}
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 20px;
+    color: #dcd3dc ; 
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    /*Deixar espaço entre os campos*/
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 20px;
+    background-color: #f5edf5;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #cfd8dc;
+}
+
+button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+}
+
+.allDetail {
+    cursor: default;
+    width: 75%;
+    /*Cor texto*/
+    color: #dcd3dc;
+    /*Grossura do texto*/
+    font-weight: bold;
+}
+
+.classId {
+    /*deixar marge em baixo*/
+    margin-bottom: 10px;
+}
+
+.tudoArmazem{
+    width: 75%;
+    margin:0 auto;
+    box-sizing: border-box;
+    border: 10px solid  #c6bec6;
+    background-color:  #483d48;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    /*Round corners*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    /*Shadow*/
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+}
+
+h2 {
+    font-size:30px;
+    height:50px;
+}

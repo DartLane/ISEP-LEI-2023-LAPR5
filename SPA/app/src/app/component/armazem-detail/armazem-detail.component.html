@@ -1,0 +1,33 @@
+<div class="tudoArmazem">
+  <div class="allDetail" *ngIf="armazem">
+
+    <h2>Armazem {{armazem.designacao | uppercase}} detalhes</h2>
+    <div class="classId"><span>ID: </span>{{armazem.id}}</div>
+    <div>
+      <label for="armazem-designacao">Armazem designacao: </label>
+      <input id="armazem-designacao" [(ngModel)]="armazem.designacao" placeholder="designacao"><br><br>
+
+      <label for="armazem-morada">Armazem morada: </label>
+      <input id="armazem-morada" [(ngModel)]="armazem.morada" placeholder="morada"><br><br>
+
+      <label for="armazem-localidade">Armazem localidade: </label>
+      <input id="armazem-localidade" [(ngModel)]="armazem.localidade" placeholder="localidade"><br><br>
+
+      <label for="armazem-codigoPostal">Armazem codigo postal: </label>
+      <input id="armazem-codigoPostal" [(ngModel)]="armazem.codigoPostal" placeholder="codigo postal"><br><br>
+
+      <label for="armazem-latitude">Armazem latitude: </label>
+      <input id="armazem-latitude" type="number" [(ngModel)]="armazem.latitude" placeholder="latitude"><br><br>
+
+      <label for="armazem-longitude">Armazem longitude: </label>
+      <input id="armazem-longitude" type="number" [(ngModel)]="armazem.longitude" placeholder="longitude"><br><br>
+
+      <label for="armazem-altitude">Armazem altitude: </label>
+      <input id="armazem-altitude" type="number" [(ngModel)]="armazem.altitude" placeholder="altitude"><br><br>
+    </div>
+
+  </div>
+
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="save()">save</button>
+</div>

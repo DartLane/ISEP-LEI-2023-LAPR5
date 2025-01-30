@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "248bb828-1395-4000-ae38-5874779fefe4",
+		"name": "Caminhos Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18049712"
+	},
+	"item": [
+		{
+			"name": "Main Test - Post, Get, Put, Patch",
+			"item": [
+				{
+					"name": "Post Armazem1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\" : \"zz1\",\r\n    \"Designacao\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"Morada\": \"atum\",\r\n    \"Localidade\": \"Localidade\",\r\n    \"CodigoPostal\": \"4442-333\",\r\n    \"Latitude\": 10,\r\n    \"Longitude\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/armazens",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Armazem2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\" : \"zz2\",\r\n    \"Designacao\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"Morada\": \"atum\",\r\n    \"Localidade\": \"Localidade\",\r\n    \"CodigoPostal\": \"4442-333\",\r\n    \"Latitude\": 10,\r\n    \"Longitude\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/armazens",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Armazem3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\" : \"zz3\",\r\n    \"Designacao\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"Morada\": \"atum\",\r\n    \"Localidade\": \"Localidade\",\r\n    \"CodigoPostal\": \"4442-333\",\r\n    \"Latitude\": 10,\r\n    \"Longitude\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/armazens",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Caminho Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var str= responseBody;\r",
+									"var obj= JSON.parse(str);\r",
+									"pm.environment.set(\"id_caminho\", obj.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"energiaNecessariaKWh\": 10,\r\n    \"tempoDeslocacaoMin\": 10,\r\n    \"idArmazemOrigem\": \"zz1\",\r\n    \"idArmazemDestino\": \"zz2\",\r\n    \"distanciaEntreArmazens\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Caminho Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 300ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos/{{id_caminho}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos",
+								"{{id_caminho}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Caminho Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"energiaNecessariaKWh check\", function () {\r",
+									"    pm.expect(responseJson.energiaNecessariaKWh).to.eql(20);\r",
+									"});\r",
+									"pm.test(\"tempoDeslocacaoMin check\", function () {\r",
+									"    pm.expect(responseJson.tempoDeslocacaoMin).to.eql(12);\r",
+									"});\r",
+									"pm.test(\"idArmazemOrigem check\", function () {\r",
+									"    pm.expect(responseJson.idArmazemOrigem).to.eql(\"zz1\");\r",
+									"});\r",
+									"pm.test(\"idArmazemDestino check\", function () {\r",
+									"    pm.expect(responseJson.idArmazemDestino).to.eql(\"zz3\");\r",
+									"});\r",
+									"pm.test(\"distanciaEntreArmazens check\", function () {\r",
+									"    pm.expect(responseJson.distanciaEntreArmazens).to.eql(10);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"energiaNecessariaKWh\": 20,\r\n    \"tempoDeslocacaoMin\": 12,\r\n    \"idArmazemOrigem\": \"zz1\",\r\n    \"idArmazemDestino\": \"zz3\",\r\n    \"distanciaEntreArmazens\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos/{{id_caminho}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos",
+								"{{id_caminho}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Caminho After Put Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 300ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+									"});\r",
+									"\r",
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"energiaNecessariaKWh check\", function () {\r",
+									"    pm.expect(responseJson.energiaNecessariaKWh).to.eql('20');\r",
+									"});\r",
+									"pm.test(\"tempoDeslocacaoMin check\", function () {\r",
+									"    pm.expect(responseJson.tempoDeslocacaoMin).to.eql('12');\r",
+									"});\r",
+									"pm.test(\"idArmazemOrigem check\", function () {\r",
+									"    pm.expect(responseJson.idArmazemOrigem).to.eql(\"zz1\");\r",
+									"});\r",
+									"pm.test(\"idArmazemDestino check\", function () {\r",
+									"    pm.expect(responseJson.idArmazemDestino).to.eql(\"zz3\");\r",
+									"});\r",
+									"pm.test(\"distanciaEntreArmazens check\", function () {\r",
+									"    pm.expect(responseJson.distanciaEntreArmazens).to.eql('10');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos/{{id_caminho}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos",
+								"{{id_caminho}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Caminho",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos/{{id_caminho}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos",
+								"{{id_caminho}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Caminho 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 300ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/caminhos/{{id_caminho}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"caminhos",
+								"{{id_caminho}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Armazem1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/armazens/zz1/hard",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens",
+								"zz1",
+								"hard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Armazem2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/armazens/zz2/hard",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens",
+								"zz2",
+								"hard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Armazem3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/armazens/zz3/hard",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"armazens",
+								"zz3",
+								"hard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

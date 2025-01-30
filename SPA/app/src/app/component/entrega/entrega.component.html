@@ -1,0 +1,173 @@
+
+<div class="EntregaSection">
+    <div class="criarform">
+      <h3 class="tituloCriarEntregas" style="margin-left: 43%;"> Criar Entregas</h3> 
+      <div class="row">
+          <div class="col">
+            <label for="tempodescarga"  style="position: relative; left: 15px; bottom: 5px"> TempoDescarga da Entrega:</label><br>
+            <input #tempodescarga
+            name="tempodescarga"
+              type="number" Min="1" 
+              class="form-control"
+              placeholder="Ex: 1 hora"
+              style="position: relative; left: 15px; bottom: 5px">
+          </div>
+          <div class="col">
+        </div>
+  
+        <div class="row">
+          <div class="col">
+              <label for="tempocarga" style="position: relative; left: 15px; bottom: 5px">TempoCarga da Entrega:</label><br>
+              <input #tempocarga
+              name="tempocarga"
+              type="number" Min="1" 
+              class="form-control"
+              placeholder="Ex: 1 hora"
+              style="position: relative; left: 15px; bottom: 5px">
+          </div>
+          <div class="col">
+        </div>
+  
+        <div class="row">
+          <div class="col">
+              <label for="massa" style="position: relative; left: 15px; bottom: 5px">Massa da Entrega:</label><br>
+              <input #massa
+              name="massa"
+              type="number" Min="1"
+              class="form-control"
+              placeholder="Ex: 4 toneladas"
+              style="position: relative; left: 15px; bottom: 5px">
+          </div>
+          <div class="col">
+        </div>
+  
+        <div class="row">
+          <div class="col">
+              <label for="armazemId" style="position: relative; left: 15px; bottom: 5px">ArmazemId de Entrega:</label><br>
+              <input #armazemId
+              name="armazemId"
+              type="text"
+              class="form-control"
+              placeholder="Ex: 001"
+              style="position: relative; left: 15px; bottom: 5px">
+          </div>
+          <div class="col">    
+        </div>
+  
+        <div class="row">
+          <div class="col">
+              <label for="dia" style="position: relative; left: 15px; bottom: 5px">Dia de Entrega:</label><br>
+              <input #dia
+              name="dia"
+              type="number" Min="1" 
+              class="form-control"
+              placeholder="Ex:20"
+              style="position: relative; left: 15px; bottom: 5px"
+            />
+          </div>
+          <div class="col">
+        </div>
+        
+        <div class="row">
+          <div class="col">
+              <label for="mes" style="position: relative; left: 15px; bottom: 5px">Mes de Entrega:</label><br>
+              <input #mes
+              name="mes"
+              type="number"  Min="1" 
+              class="form-control"
+              placeholder="Ex: 2"
+              style="position: relative; left: 15px; bottom: 5px"
+            />
+          </div>
+          <div class="col">   
+        </div>
+
+        <div class="row">
+          <div class="col">
+              <label for="ano" style="position: relative; left: 15px; bottom: 5px">Ano de Entrega:</label><br>
+              <input #ano
+              name="ano"
+              type="number"  Min="1" 
+              class="form-control"
+              placeholder="Ex: 2002"
+              style="position: relative; left: 15px; bottom: 5px"
+            />
+          </div>
+          <div class="col">   
+        </div>
+  
+        <button 
+          (click)="criarEntrega(tempodescarga.value, tempocarga.value, massa.value, armazemId.value, dia.value, mes.value, ano.value )"
+          id="botaoAdicionarEntrega"
+          class="card card-small"
+        >
+        Adicionar Entrega
+        </button>
+    </div>
+  </div>
+  
+  <div class="entregas">
+    <h3 class="titulos" style="margin-top: 20px; ">Entregas</h3>
+    <ul class="entregas">
+      <div class="filterTd">
+
+        <select class="selectFilters" id="selectFilter">
+          <option value="todos">Todos</option>
+          <option value="Armazem">Armazém</option>
+          <option value="Intervalo de Datas">Intervalo de Datas</option>
+        </select>
+
+        <div class="col">
+          <input type="text" class="filterValue" id="inputFilter1" placeholder="Filter">
+        </div>
+        <div class="col">
+          <input type="text" class="filterValue" id="inputFilter2" placeholder="Filter">
+        </div>
+ </div>
+        <button id="botaoFiltrarEntregas" class="filterButton" (click)="filterEntregas()">
+          Filtrar
+        </button>
+
+      <button 
+         (click)="listarEntregasArmAsc()"
+          id="botaolistarEntregasArmAsc"
+          class="card card-small"
+        >
+        Armazens Ascendente
+        </button>
+        <button 
+          (click)="listarEntregasArmDesc()"
+          id="botaolistarEntregasArmDesc"
+          class="card card-small"
+        >
+        Armazens Descendente
+        </button>
+        <button 
+          (click)="listarEntregasDataAsc()"
+          id="botaolistarEntregasArmDesc"
+          class="card card-small"
+        >
+        Data Ascendente
+        </button>
+        <button 
+          (click)="listarEntregasDataDesc()"
+          id="botaolistarEntregasArmDesc"
+          class="card card-small"
+        >
+        Data Descendente
+        </button>
+      <li class=entregasLi *ngFor="let entrega of entregas">
+        <a routerLink="/detail/{{entrega.id}}">
+          <button [class.selected]="entrega === selectedEntrega" type="button" 
+          (click)="onSelect(entrega)"
+          >
+          <span class="badge">ArmazemId:{{entrega.armazemId}} {{entrega.dia}}/{{entrega.mes}}/{{entrega.ano}}</span>
+        </button>
+        </a>
+        <button class="delete" title="delete entrega"
+          (click)="deleteEntrega(entrega)" id="botaoDeleteEntrega">X</button>         
+      </li> 
+    </ul>
+    <app-entrega-detail [entrega]="selectedEntrega" id="detalheEntrega"></app-entrega-detail>
+  </div> 
+  

@@ -1,0 +1,20 @@
+  
+  <div class="entregas">
+    <h3 class="titulos" style="margin-top: 20px; ">Plano de Entregas</h3>
+    <ul class="entregas">
+      <li class=entregasLi *ngFor="let plano of planos | paginate:{ itemsPerPage:pageSize, currentPage: paginaAtual,totalItems: total }">
+        <a routerLink="/detail/{{plano.id}}">
+          <button [class.selected]="plano === selectedPlanoEntrega" type="button" 
+          (click)="onSelect(plano)"
+          >
+          <span class="badge">Camiao:{{plano.camiaoMatricula}} {{plano.date}}}</span>
+        </button>
+        </a>         
+      </li> 
+    </ul>
+    <div class="pagination">
+      <pagination-controls class="my-pagination" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+    <app-planoentregas-detail [plano]="selectedPlanoEntrega" id="detalheEntrega"></app-planoentregas-detail>
+  </div> 
+  
