@@ -1,0 +1,126 @@
+@startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
+
+package Camiao{
+class Camiao{
+    -camiaoId 
+}
+class Matricula{}
+class TaraKg{}
+class CapacidadeMaximaKg{}
+class CargaTotalBateriaskWh{}
+class AutonomiaKm{}
+class TempoRecarregamentoMin{}
+
+Camiao <<entity root>>
+Matricula <<value object>>
+TaraKg <<value object>>
+CapacidadeMaximaKg <<value object>>
+CargaTotalBateriaskWh <<value object>>
+AutonomiaKm <<value object>>
+TempoRecarregamentoMin <<value object>>
+
+Camiao  --> "1" Matricula
+Camiao  --> "1" TaraKg
+Camiao  --> "1" CapacidadeMaximaKg
+Camiao  --> "1" CargaTotalBateriaskWh
+Camiao  --> "1" AutonomiaKm
+Camiao  --> "1" TempoRecarregamentoMin
+}
+
+package Armazem{
+class Armazem{
+    -armazemId
+}
+class Designacao{}
+class Endereco{
+    -morada
+    -localidade
+    -codigoPostal
+}
+class Coordenadas{
+     -latitude
+     -longitude
+}
+
+Armazem <<entity root>>
+Designacao <<value object>>
+Endereco <<value object>>
+Coordenadas <<value object>>
+
+Armazem  --> "1" Designacao
+Armazem  --> "1" Endereco
+Armazem  --> "1" Coordenadas
+}
+
+
+package Entregas{
+class Entrega{
+  -entregaId  
+}
+class DataEntrega{
+    -ano 
+    -mes
+    -dia
+}
+class MassaKg{}
+class ArmazemEntrega{}
+class TempoCargaMin{}
+class TempoDescargaMin{}
+
+Entrega <<entity root>>
+DataEntrega <<value object>>
+MassaKg <<value object>>
+ArmazemEntrega <<value object>>
+TempoCargaMin <<value object>>
+TempoDescargaMin <<value object>>
+
+Entrega  --> "1" DataEntrega
+Entrega  --> "1" MassaKg
+Entrega  --> "1" TempoCargaMin
+Entrega  --> "1" TempoDescargaMin
+Entrega  --> "1" ArmazemEntrega
+
+
+class PlanoEntrega{
+    -planoId
+}
+class DataDoPlano{
+    -ano 
+    -mes
+    -dia
+}
+
+PlanoEntrega <<entity>>
+DataDoPlano <<value object>>
+
+PlanoEntrega --> "1" DataDoPlano
+}
+
+package Caminho{
+class Caminho{
+    -caminhoId
+}
+class DistanciaEntreArmazensKm{}
+class TempoDeslocacaoMin{}
+class EnergiaNecessariaKWh{}
+
+Caminho <<entity root>>
+DistanciaEntreArmazensKm <<value object>>
+TempoDeslocacaoMin <<value object>>
+EnergiaNecessariaKWh <<value object>>
+
+Caminho --> "1" DistanciaEntreArmazensKm
+Caminho --> "1" TempoDeslocacaoMin
+Caminho --> "1" EnergiaNecessariaKWh
+}
+
+Armazem "1" -- "*" Caminho : destino
+Armazem "1" -- "*" Caminho : origem
+Caminho "*" -- "*" PlanoEntrega : ordenados
+PlanoEntrega "1" -- "*" Entrega
+PlanoEntrega "*" -- "1" Camiao
+
+@enduml
