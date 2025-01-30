@@ -19,18 +19,18 @@ export default {
   /**
    * That long string from mlab
    */
-  databaseURL: process.env.MONGODB_URI || "mongodb+srv://mongodbuser:lapr05_g3@cluster0.svqvl6u.mongodb.net/test",
+  databaseURL: process.env.MONGODB_URI,
 
   /**
    * Your secret sauce
    */
-  jwtSecret: process.env.JWT_SECRET || "my sakdfho2390asjod$%jl)!sdjas0i secret",
+  jwtSecret: process.env.JWT_SECRET,
 
   /**
    * Used by winston logger
    */
   logs: {
-    level: process.env.LOG_LEVEL || 'info',
+    level: process.env.LOG_LEVEL,
   },
 
   gestaoArmazensURL: "https://localhost:5001/api",
